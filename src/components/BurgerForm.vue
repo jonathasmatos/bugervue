@@ -5,7 +5,7 @@
       <form id="burger-form" @submit="createBurger">
         <div class="input-cotainer">
           <label for="nome"> Nome do Cliente :</label>
-          <input
+          <input  
             type="text"
             id="nome"
             name="nome"
