@@ -4,16 +4,16 @@
     <div>
       <form id="burger-form" @submit="createPao">
         <div class="input-cotainer">
-          <label for="tipo"> Adicione Pães :</label>
+          <label for="pao"> Adicione Pães :</label>
           <input 
             type="text"
-            id="tipo"
-            name="tipo"
-            v-model="tipo"
+            id="pao"
+            name="pao"
+            v-model="paes"
             placeholder="Digite o pao"
           />
         </div>
-        <div class="input-cotainer">
+        <!-- <div class="input-cotainer">
           <label for="padaria"> Escolha a sua carne :</label>
           <select name="tipo" id="tipo" v-model="padaria">
             <option value="">Selecione o tipo de pão</option>
@@ -21,7 +21,7 @@
               {{ padaria.tipo }}
             </option>
           </select>
-        </div>
+        </div> -->
         <div class="input-container">
           <input type="submit" class="submit-btn" value="Adicionar Pao!" />
         </div>
@@ -41,6 +41,8 @@ export default {
     return {
       tipo: null,
       tipos: null,
+      pao: [{}],
+      paes: null,
       padaria: null,
       padarias: null,
       msg: null,
@@ -59,7 +61,9 @@ export default {
     async createPao(e) {
       e.preventDefault();
       const data = {
-        tipo: this.tipo,
+        paes: Array.from (this.pao),
+        
+        
       };
       const dataJson = JSON.stringify(data);
       const req = await fetch("http://localhost:3000/padarias", {

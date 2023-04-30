@@ -63,24 +63,13 @@
       }
     ]
   },
-  "padarias": [
-    {
-      "id": 1,
-      "tipo": "Italiano Branco"
-    },
-    {
-      "tipo": "jjjjjjjjjjjjjjjj",
-      "id": 2
-    },
-    {
-      "tipo": "retttttt",
-      "id": 3
-    },
-    {
-      "tipo": null,
-      "id": 4
-    }
-  ],
+  "padarias": {
+    "paes": [
+      "g",
+      "g",
+      "g"
+    ]
+  },
   "status": [
     {
       "id": 1,
