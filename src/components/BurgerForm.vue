@@ -1,11 +1,11 @@
 <template>
   <div>
-    <Message :msg = "msg" v-show="msg"/>
+    <Message :msg="msg" v-show="msg" />
     <div>
       <form id="burger-form" @submit="createBurger">
         <div class="input-cotainer">
           <label for="nome"> Nome do Cliente :</label>
-          <input  
+          <input
             type="text"
             id="nome"
             name="nome"
@@ -100,23 +100,14 @@ export default {
         headers: { "Content-Type": "application/json" },
         body: dataJson,
       });
-
-     
-     
-
-
-     
       const res = await req.json();
- // Chamar mensagem de sucesso.
-      this.msg = `Pedido de Nº ${res.id} Realizado com sucesso !`
+      // Chamar mensagem de sucesso.
+      this.msg = `Pedido de Nº ${res.id} Realizado com sucesso !`;
 
       //Limpar MSG
-      setTimeout(()=>this.msg = "", 2000);
+      setTimeout(() => this.msg = "", 2000);
 
-
-
-       // Limpar Campos do Fornmulário
-
+      // Limpar Campos do Fornmulário
       this.nome = "";
       this.carne = "";
       this.pao = "";
