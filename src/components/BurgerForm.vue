@@ -45,6 +45,7 @@
               name="opcionais"
               v-model="opcionais"
               :value="opcional.tipo"
+              v-reset-input
             />
             <span>{{ opcional.tipo }}</span>
           </div>
@@ -103,9 +104,8 @@ export default {
       const res = await req.json();
       // Chamar mensagem de sucesso.
       this.msg = `Pedido de Nº ${res.id} Realizado com sucesso !`;
-
       //Limpar MSG
-      setTimeout(() => this.msg = "", 2000);
+      setTimeout(() => (this.msg = ""), 2000);
 
       // Limpar Campos do Fornmulário
       this.nome = "";

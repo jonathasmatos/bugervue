@@ -1,5 +1,7 @@
 <template>
   <div id="burger-table" v-if="burgers">
+    <MessageExcluir :msgExcluir="msgExcluir" v-show="msgExcluir" />
+    <MessageEditar :msgEditar="msgEditar" v-show="msgEditar" />
     <div>
       <div id="burger-table-heading">
         <div class="order-id">#:</div>
@@ -48,13 +50,22 @@
   </div>
 </template>
   <script>
+import MessageExcluir from "@/components/MessageExcluir.vue";
+import MessageEditar from '@/components/MessageEditar.vue';
 export default {
   name: "Dashboard",
+  components: {
+    MessageExcluir,
+    MessageEditar
+    
+  },
   data() {
     return {
       burgers: null,
       burger_id: null,
       status: [],
+      msgExcluir: null,
+      msgEditar: null,
     };
   },
   methods: {
@@ -75,13 +86,19 @@ export default {
 
       this.status = data;
     },
+    
     async deleteBurger(id) {
+
       const req = await fetch(`http://localhost:3000/burgers/${id}`, {
         method: "DELETE",
-      });
+        
+      }); 
 
       const res = await req.json();
 
+      this.msgExcluir = `Pedido de Nº:  ${id}  foi excluido! `;
+
+      setTimeout(() => (this.msgExcluir = ""), 3000);
       this.getPedidos();
     },
     async updateBurger(event, id) {
@@ -96,6 +113,10 @@ export default {
       });
 
       const res = await req.json();
+
+      this.msgEditar = `Pedido de Nº:  ${res.id}   foi alterado para: ${res.status} `;
+
+      setTimeout(() => (this.msgEditar = ""), 1000);
 
       console.log(res);
     },

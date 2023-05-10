@@ -10,7 +10,7 @@ import Dashboard from './Dashboard.vue';
 export default {
   name: "Pedidos",
 components:{
-  Dashboard
+  Dashboard,
 }
 };
 </script>
